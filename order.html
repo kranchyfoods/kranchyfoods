@@ -45,16 +45,14 @@ width:100%;
 
 <h1>Place Your Order</h1>
 
-<label>Name</label>
-<input type="text">
+<label>Full Name</label>
+<input type="text" placeholder="Enter your name">
 
 <label>Phone Number</label>
-<input type="text">
+<input type="tel" placeholder="Enter your phone number">
 
 <label>Select Meal</label>
-
-<select>
-
+<select id="meal">
 <option>Kenkey Pipeline - GHS40</option>
 <option>Kenkey Peterlover - GHS65</option>
 <option>Kenkey Beloved - GHS80</option>
@@ -66,23 +64,73 @@ width:100%;
 <option>ChicBox - GHS35</option>
 <option>Pork Box - GHS50</option>
 <option>ChopBox - GHS100</option>
-
 </select>
 
+<h3>Protein Choice (Kenkey Meals)</h3>
+
+<label>
+<input type="radio" name="protein">
+Pork
+</label>
+
+<br>
+
+<label>
+<input type="radio" name="protein">
+Wings
+</label>
+
+<h3>Extras</h3>
+
+<label><input type="checkbox"> Cheese (+GHS10)</label><br>
+<label><input type="checkbox"> Shrimps (+GHS20)</label><br>
+<label><input type="checkbox"> Fried Egg (+GHS5)</label><br>
+<label><input type="checkbox"> Sausage (+GHS5)</label><br>
+<label><input type="checkbox"> Gizzard (+GHS10)</label><br>
+<label><input type="checkbox"> Shito (+GHS5)</label>
+
+<h3>Drinks</h3>
+
+<label><input type="checkbox"> Coke (+GHS10)</label><br>
+<label><input type="checkbox"> Fanta (+GHS10)</label><br>
+<label><input type="checkbox"> Malt (+GHS15)</label><br>
+<label><input type="checkbox"> BB Cocktail (+GHS15)</label><br>
+<label><input type="checkbox"> Water (+GHS5)</label>
+
+<h3>Quantity</h3>
+
+<input type="number" value="1" min="1">
+
 <label>Order Notes</label>
+<textarea placeholder="Special instructions"></textarea>
 
-<textarea></textarea>
+<h3>Order Type</h3>
 
-<h3>MoMo Payment</h3>
+<label>
+<input type="radio" name="ordertype">
+Pickup
+</label>
 
-<p>Pay to:</p>
+<label>
+<input type="radio" name="ordertype">
+Delivery
+</label>
+
+<h3>Mobile Money Payment</h3>
+
+<p>Pay To:</p>
 
 <h2>0538808906</h2>
 
-<p>Upload payment screenshot later (Version 2)</p>
+<p>Kranchy's Foods</p>
+
+<p>
+After payment, send screenshot to WhatsApp:
+<strong>0542163246</strong>
+</p>
 
 <button>
-Submit Order
+Place Order
 </button>
 
 </form>
