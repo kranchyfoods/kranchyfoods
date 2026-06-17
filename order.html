@@ -6,6 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+  <script>
+function toggleQty(id){
+  const box = document.getElementById(id);
+
+  if(box.style.display === "block"){
+      box.style.display = "none";
+  } else {
+      box.style.display = "block";
+  }
+}
+</script>
 body{
 font-family:Arial,sans-serif;
 background:#FFD400;
