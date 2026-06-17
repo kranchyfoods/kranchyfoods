@@ -81,6 +81,46 @@ align-items:center;
 gap:10px;
 margin:8px 0;
 }
+  .meal-card{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:10px;
+    margin:10px 0;
+}
+
+.meal-card img{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.meal-info{
+    flex:1;
+}
+
+.meal-name{
+    font-weight:bold;
+    display:block;
+}
+
+.meal-price{
+    color:#666;
+    font-size:14px;
+}
+
+.qty{
+    width:60px !important;
+    padding:5px;
+}
+
+.meal-select{
+    margin-right:10px;
+}
 </style>
 </head>
 <script>
@@ -108,76 +148,82 @@ function toggleQty(id){
 
 <h3>Select Meals</h3>
 
-<div class="meal-row">
-  <div class="meal-left">
-    <input type="checkbox" onclick="toggleQty('qty1')">
-    <label>Kenkey Pipeline - GHS40</label>
-  </div>
-  <input id="qty1" class="qty" type="number" min="1" value="1">
+<div class="meal-card">
+    <input type="checkbox" class="meal-select">
+
+    <img src="images/kenkey-party.png">
+
+    <div class="meal-info">
+        <span class="meal-name">Kenkey Pipeline</span>
+        <span class="meal-price">GHS40</span>
+    </div>
+
+    <input type="number" class="qty" value="1" min="1">
 </div>
 
-<div class="meal-row">
-  <div class="meal-left">
-    <input type="checkbox" onclick="toggleQty('qty2')">
-    <label>Kenkey Peterlover - GHS65</label>
-  </div>
-  <input id="qty2" class="qty" type="number" min="1" value="1">
+<div class="meal-card">
+    <input type="checkbox" class="meal-select">
+
+    <img src="images/kenkey-party.png">
+
+    <div class="meal-info">
+        <span class="meal-name">Kenkey Peterlover</span>
+        <span class="meal-price">GHS65</span>
+    </div>
+
+    <input type="number" class="qty" value="1" min="1">
 </div>
 
-<div class="meal-row">
-  <div class="meal-left">
-    <input type="checkbox" onclick="toggleQty('qty3')">
-    <label>Kenkey Beloved - GHS80</label>
-  </div>
-  <input id="qty3" class="qty" type="number" min="1" value="1">
+<div class="meal-card">
+    <input type="checkbox" class="meal-select">
+
+    <img src="images/kenkey-party.png">
+
+    <div class="meal-info">
+        <span class="meal-name">Kenkey Beloved</span>
+        <span class="meal-price">GHS80</span>
+    </div>
+
+    <input type="number" class="qty" value="1" min="1">
 </div>
 
-<div class="meal-row">
-  <div class="meal-left">
-    <input type="checkbox" onclick="toggleQty('qty4')">
-    <label>Pipeline - GHS50</label>
-  </div>
-  <input id="qty4" class="qty" type="number" min="1" value="1">
+<div class="meal-card">
+    <input type="checkbox" class="meal-select">
+
+    <img src="images/chicbox.png">
+
+    <div class="meal-info">
+        <span class="meal-name">ChicBox</span>
+        <span class="meal-price">GHS35</span>
+    </div>
+
+    <input type="number" class="qty" value="1" min="1">
 </div>
 
-<div class="meal-row">
-  <div class="meal-left">
-    <input type="checkbox" onclick="toggleQty('qty5')">
-    <label>Peterlover - GHS70</label>
-  </div>
-  <input id="qty5" class="qty" type="number" min="1" value="1">
+<div class="meal-card">
+    <input type="checkbox" class="meal-select">
+
+    <img src="images/porkbox.png">
+
+    <div class="meal-info">
+        <span class="meal-name">Pork Box</span>
+        <span class="meal-price">GHS50</span>
+    </div>
+
+    <input type="number" class="qty" value="1" min="1">
 </div>
 
-<div class="meal-row">
-  <div class="meal-left">
-    <input type="checkbox" onclick="toggleQty('qty6')">
-    <label>Well Pack - GHS95</label>
-  </div>
-  <input id="qty6" class="qty" type="number" min="1" value="1">
-</div>
+<div class="meal-card">
+    <input type="checkbox" class="meal-select">
 
-<div class="meal-row">
-  <div class="meal-left">
-    <input type="checkbox" onclick="toggleQty('qty7')">
-    <label>ChicBox - GHS35</label>
-  </div>
-  <input id="qty7" class="qty" type="number" min="1" value="1">
-</div>
+    <img src="images/chopbox.png">
 
-<div class="meal-row">
-  <div class="meal-left">
-    <input type="checkbox" onclick="toggleQty('qty8')">
-    <label>Pork Box - GHS50</label>
-  </div>
-  <input id="qty8" class="qty" type="number" min="1" value="1">
-</div>
+    <div class="meal-info">
+        <span class="meal-name">ChopBox</span>
+        <span class="meal-price">GHS100</span>
+    </div>
 
-<div class="meal-row">
-  <div class="meal-left">
-    <input type="checkbox" onclick="toggleQty('qty9')">
-    <label>ChopBox - GHS100</label>
-  </div>
-  <input id="qty9" class="qty" type="number" min="1" value="1">
+    <input type="number" class="qty" value="1" min="1">
 </div>
 <h3>Protein Choice (Pipeline)</h3>
 
