@@ -142,6 +142,18 @@ margin:8px 0;
     text-align:center;
     font-weight:bold;
 }
+
+.drink-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin:8px 0;
+}
+
+.drink-card .qty{
+    width:60px;
+}
 </style>
 </head>
 <script>
@@ -346,15 +358,85 @@ Wings
 
 <h3>Drinks</h3>
 
-<label><input type="checkbox" class="drink" data-price="10"> Coke (+GHS10)</label><br>
+<div class="drink-card">
+    <input type="checkbox"
+           class="drink-select"
+           onchange="toggleQty('drinkQty1'); updateSummary()">
 
-<label><input type="checkbox" class="drink" data-price="10"> Fanta (+GHS10)</label><br>
+    <span>Coke (+GHS10)</span>
 
-<label><input type="checkbox" class="drink" data-price="15"> Malt (+GHS15)</label><br>
+    <input type="number"
+           id="drinkQty1"
+           class="qty"
+           value="1"
+           min="1"
+           style="display:none;"
+           onchange="updateSummary()">
+</div>
 
-<label><input type="checkbox" class="drink" data-price="15"> BB Cocktail (+GHS15)</label><br>
+<div class="drink-card">
+    <input type="checkbox"
+           class="drink-select"
+           onchange="toggleQty('drinkQty1'); updateSummary()">
 
-<label><input type="checkbox" class="drink" data-price="5"> Water (+GHS5)</label>
+    <span>Fanta (+GHS10)</span>
+
+    <input type="number"
+           id="drinkQty1"
+           class="qty"
+           value="1"
+           min="1"
+           style="display:none;"
+           onchange="updateSummary()">
+</div>
+
+<div class="drink-card">
+    <input type="checkbox"
+           class="drink-select"
+           onchange="toggleQty('drinkQty1'); updateSummary()">
+
+    <span>Malt (+GHS15)</span>
+
+    <input type="number"
+           id="drinkQty1"
+           class="qty"
+           value="1"
+           min="1"
+           style="display:none;"
+           onchange="updateSummary()">
+</div>
+
+<div class="drink-card">
+    <input type="checkbox"
+           class="drink-select"
+           onchange="toggleQty('drinkQty1'); updateSummary()">
+
+    <span>BB Coctail (+GHS15)</span>
+
+    <input type="number"
+           id="drinkQty1"
+           class="qty"
+           value="1"
+           min="1"
+           style="display:none;"
+           onchange="updateSummary()">
+</div>
+
+<div class="drink-card">
+    <input type="checkbox"
+           class="drink-select"
+           onchange="toggleQty('drinkQty1'); updateSummary()">
+
+    <span>Water (+GHS5)</span>
+
+    <input type="number"
+           id="drinkQty1"
+           class="qty"
+           value="1"
+           min="1"
+           style="display:none;"
+           onchange="updateSummary()">
+</div>
 
 <h3>Spicy Level</h3>
 
