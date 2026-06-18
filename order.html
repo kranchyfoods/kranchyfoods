@@ -547,17 +547,7 @@ function calculateTotal(){
 
     });
 
-    document.querySelectorAll(".drink:checked")
-    .forEach(item => {
-
-        total += parseInt(item.dataset.price);
-
-        summary +=
-            item.parentElement.innerText +
-            "<br>";
-
-    });
-
+    
     document.getElementById("orderSummary")
         .innerHTML =
         summary || "No items selected";
