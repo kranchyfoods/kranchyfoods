@@ -19,10 +19,10 @@ gap:10px;
 }
 
 .qty{
-width:55px !important;
-max-width:55px !important;
-display:none;
-padding:4px;
+    width:55px;
+    height:35px;
+    padding:2px;
+    margin-left:auto;
 }
 body{
 font-family:Arial,sans-serif;
@@ -124,15 +124,30 @@ margin:8px 0;
 </style>
 </head>
 <script>
-function toggleQty(id){
-  const box = document.getElementById(id);
+  
+document.addEventListener("DOMContentLoaded", function() {
 
-  if(box.style.display === "block"){
-      box.style.display = "none";
-  } else {
-      box.style.display = "block";
-  }
-}
+  document.querySelectorAll(".meal-card").forEach(function(card){
+
+    const checkbox = card.querySelector(".meal-select");
+    const qty = card.querySelector(".qty");
+
+    qty.style.display = "none";
+
+    checkbox.addEventListener("change", function(){
+
+      if(this.checked){
+        qty.style.display = "block";
+      } else {
+        qty.style.display = "none";
+      }
+
+    });
+
+  });
+
+});
+  
 </script>
 <body>
 
