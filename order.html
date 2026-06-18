@@ -359,95 +359,122 @@ Wings
 <h3>Drinks</h3>
 
 <div class="meal-card">
+
     <input
-    type="checkbox"
-    class="meal-select"
-    data-price="10"
-    onchange="updateSummary()">
+        type="checkbox"
+        class="meal-select"
+        data-price="10"
+        onchange="calculateTotal()">
 
-    <span>Coke (+GHS10)</span>
+    <div class="meal-info">
+        <span class="meal-name">Coke</span>
+        <span class="meal-price">GHS10</span>
+    </div>
 
-    <input type="number"
-           id="drinkQty1"
-           class="qty"
-           value="1"
-           min="1"
-           style="display:none;"
-           onchange="updateSummary()">
+    <input
+        type="number"
+        id="drinkQty1"
+        class="qty"
+        value="1"
+        min="1"
+        style="display:none;"
+        onchange="calculateTotal()">
+
 </div>
 
 <div class="meal-card">
+
     <input
-    type="checkbox"
-    class="meal-select"
-    data-price="10"
-    onchange="updateSummary()">
+        type="checkbox"
+        class="meal-select"
+        data-price="10"
+        onchange="calculateTotal()">
 
-    <span>Fanta (+GHS10)</span>
+    <div class="meal-info">
+        <span class="meal-name">Fanta</span>
+        <span class="meal-price">GHS10</span>
+    </div>
 
-    <input type="number"
-           id="drinkQty2"
-           class="qty"
-           value="1"
-           min="1"
-           style="display:none;"
-           onchange="updateSummary()">
+    <input
+        type="number"
+        id="drinkQty1"
+        class="qty"
+        value="1"
+        min="1"
+        style="display:none;"
+        onchange="calculateTotal()">
+
 </div>
 
 <div class="meal-card">
+
     <input
-    type="checkbox"
-    class="meal-select"
-    data-price="15"
-    onchange="updateSummary()">
+        type="checkbox"
+        class="meal-select"
+        data-price="15"
+        onchange="calculateTotal()">
 
-    <span>Malt (+GHS15)</span>
+    <div class="meal-info">
+        <span class="meal-name">Malt</span>
+        <span class="meal-price">GHS15</span>
+    </div>
 
-    <input type="number"
-           id="drinkQty3"
-           class="qty"
-           value="1"
-           min="1"
-           style="display:none;"
-           onchange="updateSummary()">
+    <input
+        type="number"
+        id="drinkQty1"
+        class="qty"
+        value="1"
+        min="1"
+        style="display:none;"
+        onchange="calculateTotal()">
+
+<div class="meal-card">
+
+    <input
+        type="checkbox"
+        class="meal-select"
+        data-price="15"
+        onchange="calculateTotal()">
+
+    <div class="meal-info">
+        <span class="meal-name">BB Cocktail</span>
+        <span class="meal-price">GHS15</span>
+    </div>
+
+    <input
+        type="number"
+        id="drinkQty1"
+        class="qty"
+        value="1"
+        min="1"
+        style="display:none;"
+        onchange="calculateTotal()">
+
 </div>
 
 <div class="meal-card">
+
     <input
-    type="checkbox"
-    class="meal-select"
-    data-price="15"
-    onchange="updateSummary()">
+        type="checkbox"
+        class="meal-select"
+        data-price="5"
+        onchange="calculateTotal()">
 
-    <span>BB Coctail (+GHS15)</span>
+    <div class="meal-info">
+        <span class="meal-name">Water</span>
+        <span class="meal-price">GHS5</span>
+    </div>
 
-    <input type="number"
-           id="drinkQty4"
-           class="qty"
-           value="1"
-           min="1"
-           style="display:none;"
-           onchange="updateSummary()">
-</div>
-
-<div class="meal-card">
     <input
-    type="checkbox"
-    class="meal-select"
-    data-price="5"
-    onchange="updateSummary()">
+        type="number"
+        id="drinkQty1"
+        class="qty"
+        value="1"
+        min="1"
+        style="display:none;"
+        onchange="calculateTotal()">
 
-    <span>Water (+GHS5)</span>
-
-    <input type="number"
-           id="drinkQty5"
-           class="qty"
-           value="1"
-           min="1"
-           style="display:none;"
-           onchange="updateSummary()">
 </div>
-
 <h3>Spicy Level</h3>
 
 <div class="option">
@@ -546,7 +573,6 @@ function calculateTotal(){
             "<br>";
 
     });
-
     
     document.getElementById("orderSummary")
         .innerHTML =
