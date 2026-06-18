@@ -170,7 +170,9 @@ document.addEventListener("DOMContentLoaded", function() {
 <h3>Select Meals</h3>
 
 <div class="meal-card">
-    <input type="checkbox" class="meal-select">
+    <input type="checkbox"
+       class="meal-select"
+       data-price="40">
 
     <img src="images/kenkey-party.png">
 
@@ -183,7 +185,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 <div class="meal-card">
-    <input type="checkbox" class="meal-select">
+    <input type="checkbox"
+       class="meal-select"
+       data-price="65">
 
     <img src="images/kenkey-party.png">
 
@@ -196,7 +200,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 <div class="meal-card">
-    <input type="checkbox" class="meal-select">
+    <input type="checkbox"
+       class="meal-select"
+       data-price="80">
 
     <img src="images/kenkey-party.png">
 
@@ -208,7 +214,9 @@ document.addEventListener("DOMContentLoaded", function() {
     <input type="number" class="qty" value="1" min="1">
 </div>
 <div class="meal-card">
-    <input type="checkbox" class="meal-select">
+    <input type="checkbox"
+       class="meal-select"
+       data-price="50">
 
     <img src="images/kenkey-party.png">
 
@@ -221,7 +229,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 <div class="meal-card">
-    <input type="checkbox" class="meal-select">
+    <input type="checkbox"
+       class="meal-select"
+       data-price="70">
 
     <img src="images/kenkey-party.png">
 
@@ -234,7 +244,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 <div class="meal-card">
-    <input type="checkbox" class="meal-select">
+    <input type="checkbox"
+       class="meal-select"
+       data-price="95">
 
     <img src="images/kenkey-party.png">
 
@@ -246,7 +258,9 @@ document.addEventListener("DOMContentLoaded", function() {
     <input type="number" class="qty" value="1" min="1">
 </div>
 <div class="meal-card">
-    <input type="checkbox" class="meal-select">
+    <input type="checkbox"
+       class="meal-select"
+       data-price="35">
 
     <img src="images/chicbox.png">
 
@@ -259,7 +273,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 <div class="meal-card">
-    <input type="checkbox" class="meal-select">
+    <input type="checkbox"
+       class="meal-select"
+       data-price="50">
 
     <img src="images/porkbox.png">
 
@@ -272,7 +288,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 
 <div class="meal-card">
-    <input type="checkbox" class="meal-select">
+    <input type="checkbox"
+       class="meal-select"
+       data-price="100">
 
     <img src="images/chopbox.png">
 
@@ -299,19 +317,27 @@ Wings
 
 <h3>Extras</h3>
 
-<label><input type="checkbox"> Shrimps (+GHS20)</label><br>
-<label><input type="checkbox"> Fried Egg (+GHS5)</label><br>
-<label><input type="checkbox"> Sausage (+GHS5)</label><br>
-<label><input type="checkbox"> Gizzard (+GHS10)</label><br>
-<label><input type="checkbox"> Shito (+GHS5)</label>
+<label><input type="checkbox" class="extra" data-price="20"> Shrimps (+GHS20)</label><br>
+
+<label><input type="checkbox" class="extra" data-price="5"> Fried Egg (+GHS5)</label><br>
+
+<label><input type="checkbox" class="extra" data-price="5"> Sausage (+GHS5)</label><br>
+
+<label><input type="checkbox" class="extra" data-price="10"> Gizzard (+GHS10)</label><br>
+
+<label><input type="checkbox" class="extra" data-price="5"> Shito (+GHS5)</label>
 
 <h3>Drinks</h3>
 
-<label><input type="checkbox"> Coke (+GHS10)</label><br>
-<label><input type="checkbox"> Fanta (+GHS10)</label><br>
-<label><input type="checkbox"> Malt (+GHS15)</label><br>
-<label><input type="checkbox"> BB Cocktail (+GHS15)</label><br>
-<label><input type="checkbox"> Water (+GHS5)</label>
+<label><input type="checkbox" class="drink" data-price="10"> Coke (+GHS10)</label><br>
+
+<label><input type="checkbox" class="drink" data-price="10"> Fanta (+GHS10)</label><br>
+
+<label><input type="checkbox" class="drink" data-price="15"> Malt (+GHS15)</label><br>
+
+<label><input type="checkbox" class="drink" data-price="15"> BB Cocktail (+GHS15)</label><br>
+
+<label><input type="checkbox" class="drink" data-price="5"> Water (+GHS5)</label>
 
 <h3>Spicy Level</h3>
 
@@ -343,7 +369,13 @@ Pickup
 <input type="radio" name="ordertype">
 Delivery
 </label>
+<h3>Order Summary</h3>
 
+<div id="orderSummary">
+    No items selected
+</div>
+
+<h2 id="orderTotal">Total: GHS0</h2>
 <h3>Mobile Money Payment</h3>
 
 <p>Pay To:</p>
@@ -362,6 +394,80 @@ Place Order
 </button>
 
 </form>
+<script>
 
+function calculateTotal(){
+
+    let total = 0;
+    let summary = "";
+
+    document.querySelectorAll(".meal-card").forEach(card => {
+
+        const meal = card.querySelector(".meal-select");
+        const qty = card.querySelector(".qty");
+
+        if(meal.checked){
+
+            const price = parseInt(meal.dataset.price);
+            const quantity = parseInt(qty.value);
+
+            total += price * quantity;
+
+            const name =
+                card.querySelector(".meal-name").innerText;
+
+            summary +=
+                name + " x" +
+                quantity +
+                " = GHS" +
+                (price * quantity) +
+                "<br>";
+
+        }
+
+    });
+
+    document.querySelectorAll(".extra:checked")
+    .forEach(item => {
+
+        total += parseInt(item.dataset.price);
+
+        summary +=
+            item.parentElement.innerText +
+            "<br>";
+
+    });
+
+    document.querySelectorAll(".drink:checked")
+    .forEach(item => {
+
+        total += parseInt(item.dataset.price);
+
+        summary +=
+            item.parentElement.innerText +
+            "<br>";
+
+    });
+
+    document.getElementById("orderSummary")
+        .innerHTML =
+        summary || "No items selected";
+
+    document.getElementById("orderTotal")
+        .innerHTML =
+        "Total: GHS" + total;
+}
+
+document.addEventListener(
+"change",
+calculateTotal
+);
+
+document.addEventListener(
+"input",
+calculateTotal
+);
+
+</script>
 </body>
 </html>
