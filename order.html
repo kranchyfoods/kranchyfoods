@@ -91,6 +91,10 @@ margin:8px 0;
     padding:10px;
     margin:10px 0;
 }
+.meal-card.selected{
+    border:2px solid #FFD400;
+    background:#fffdf0;
+}
 
 .meal-card img{
     width:80px;
@@ -137,9 +141,11 @@ document.addEventListener("DOMContentLoaded", function() {
     checkbox.addEventListener("change", function(){
 
       if(this.checked){
-        qty.style.display = "block";
-      } else {
-        qty.style.display = "none";
+    qty.style.display = "block";
+    card.classList.add("selected");
+}else{
+    qty.style.display = "none";
+    card.classList.remove("selected");
       }
 
     });
