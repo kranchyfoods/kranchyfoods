@@ -159,7 +159,7 @@ margin:8px 0;
   
 document.addEventListener("DOMContentLoaded", function() {
 
-  document.querySelectorAll(".meal-card").forEach(function(card){
+  document.querySelectorAll(".meal-card, .drink-card").forEach(function(card){
 
     const checkbox = card.querySelector(".meal-select");
     const qty = card.querySelector(".qty");
@@ -357,13 +357,13 @@ Wings
 
 <h3>Drinks</h3>
 
-<div class="meal-card">
+<div class="drink-card">
 
-    <input
-        type="checkbox"
-        class="meal-select"
-        data-price="10"
-        onchange="calculateTotal()">
+<input
+type="checkbox"
+class="meal-select"
+data-price="10"
+onchange="toggleQty('drinkQty1'); calculateTotal()">
 
     <div class="meal-info">
         <span class="meal-name">Coke</span>
@@ -381,15 +381,15 @@ Wings
 
 </div>
 
-<div class="meal-card">
+<div class="drinl-card">
 
-    <input
-        type="checkbox"
-        class="meal-select"
-        data-price="10"
-        onchange="calculateTotal()">
+<input
+type="checkbox"
+class="meal-select"
+data-price="10"
+onchange="toggleQty('drinkQty1'); calculateTotal()">
 
-    <div class="meal-info">
+  <div class="meal-info">
         <span class="meal-name">Fanta</span>
         <span class="meal-price">GHS10</span>
     </div>
@@ -405,13 +405,13 @@ Wings
 
 </div>
 
-<div class="meal-card">
+<div class="drink-card">
 
-    <input
-        type="checkbox"
-        class="meal-select"
-        data-price="15"
-        onchange="calculateTotal()">
+<input
+type="checkbox"
+class="meal-select"
+data-price="15"
+onchange="toggleQty('drinkQty1'); calculateTotal()">
 
     <div class="meal-info">
         <span class="meal-name">Malt</span>
@@ -428,13 +428,13 @@ Wings
         onchange="calculateTotal()">
   </div>
   
-<div class="meal-card">
+<div class="drink-card">
 
-    <input
-        type="checkbox"
-        class="meal-select"
-        data-price="15"
-        onchange="calculateTotal()">
+<input
+type="checkbox"
+class="meal-select"
+data-price="15"
+onchange="toggleQty('drinkQty1'); calculateTotal()">
 
     <div class="meal-info">
         <span class="meal-name">BB Cocktail</span>
@@ -452,13 +452,13 @@ Wings
 
 </div>
 
-<div class="meal-card">
+<div class="drink-card">
 
-    <input
-        type="checkbox"
-        class="meal-select"
-        data-price="5"
-        onchange="calculateTotal()">
+<input
+type="checkbox"
+class="meal-select"
+data-price="5"
+onchange="toggleQty('drinkQty1'); calculateTotal()">
 
     <div class="meal-info">
         <span class="meal-name">Water</span>
@@ -537,7 +537,7 @@ function calculateTotal(){
     let total = 0;
     let summary = "";
 
-    document.querySelectorAll(".meal-card").forEach(card => {
+    document.querySelectorAll(".meal-card, .drink-card").forEach(card => {
 
         const meal = card.querySelector(".meal-select");
         const qty = card.querySelector(".qty");
