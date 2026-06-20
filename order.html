@@ -728,12 +728,13 @@ catch(error){
     console.log(error);
 
     alert(
-    "Unable to submit order. Please try again."
+        "ERROR: " +
+        error.name +
+        "\n\n" +
+        error.message
     );
 
 }
-
-});
 
 </script>
    
