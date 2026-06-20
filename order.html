@@ -724,6 +724,24 @@ alert(
 result.orderCode
 );
 
+form.reset();
+
+calculateTotal();
+
+document.querySelectorAll(".qty").forEach(qty => {
+    qty.style.display = "none";
+});
+
+document.querySelectorAll(".meal-card, .drink-card").forEach(card => {
+    card.classList.remove("selected");
+});
+
+document.getElementById("orderSummary").innerHTML =
+"No items selected";
+
+document.getElementById("orderTotal").innerHTML =
+"Total: GHS 0";
+  
 } catch(error){
 
 console.log(error);
