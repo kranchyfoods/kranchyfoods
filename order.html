@@ -742,13 +742,9 @@ document.getElementById("orderSummary").innerHTML =
 document.getElementById("orderTotal").innerHTML =
 "Total: GHS 0";
   
-} catch(error){
+catch(error){
 
-console.log(error);
-
-alert(
-"Unable to submit order. Please try again."
-);
+    alert(error.message);
 
 }
 
