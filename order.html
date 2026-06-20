@@ -732,65 +732,7 @@ alert(
 }
 
 });
-<script>
 
-document.getElementById("orderForm")
-.addEventListener("submit", async function(e){
-
-e.preventDefault();
-
-const form = document.getElementById("orderForm");
-
-const response = await fetch(
-"https://script.google.com/macros/s/AKfycbywN3dzuFZQMAXqzp7QrwinOYewxrHdRqbgFtzXW-F9diG41LTfmu3zsm0dzCsJSCH1/exec",
-{
-method:"POST",
-body:JSON.stringify({
-customerName:
-document.getElementById("customerName").value,
-
-phoneNumber:
-document.getElementById("phoneNumber").value,
-
-orderType:
-document.querySelector('input[name="ordertype"]:checked')?.parentElement.innerText || "",
-
-meals:
-document.getElementById("orderSummary").innerText,
-
-extras:"",
-drinks:"",
-spicyLevel:"",
-notes:"",
-total:
-document.getElementById("orderTotal").innerText
-})
-}
-);
-
-const result = await response.json();
-
-alert(
-"Order received.\nOrder Code: " +
-result.orderCode
-);
-
-document.getElementById("orderCode").style.display = "block";
-
-document.getElementById("orderCode").innerHTML =
-"Order Code: <b>" +
-result.orderCode +
-"</b>";
-
-form.reset();
-
-calculateTotal();
-
-document.querySelectorAll(".qty").forEach(qty=>{
-qty.style.display="none";
-});
-
-});
 
 </script>
    
