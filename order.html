@@ -524,8 +524,17 @@ Delivery
 After payment, send screenshot to WhatsApp:
 <strong>0542163246</strong>
 </p>
+  
+<div id="orderCode"
+     style="display:none;
+            background:#FFD400;
+            padding:12px;
+            border-radius:10px;
+            margin:15px 0;
+            font-weight:bold;">
+</div>
 
-<button>
+<button type="submit">
 Place Order
 </button>
 
@@ -594,5 +603,81 @@ calculateTotal
 );
 
 </script>
+  <script>
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbywN3dzuFZQMAXqzp7QrwinOYewxrHdRqbgFtzXW-F9diG41LTfmu3zsm0dzCsJSCH1/exec";
+
+document.getElementById("orderForm")
+.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const orderCode =
+"KR" +
+Date.now().toString().slice(-6);
+
+const customerName =
+document.querySelector('input[type="text"]').value;
+
+const phone =
+document.querySelector('input[type="tel"]').value;
+
+const summary =
+document.getElementById("orderSummary").innerText;
+
+const total =
+document.getElementById("orderTotal").innerText;
+
+fetch(SCRIPT_URL,{
+method:"POST",
+body:JSON.stringify({
+orderCode:orderCode,
+name:customerName,
+phone:phone,
+summary:summary,
+total:total,
+date:new Date().toLocaleString()
+})
+})
+.then(res=>res.json())
+.then(data=>{
+
+document.getElementById("orderCode").style.display="block";
+
+document.getElementById("orderCode").innerHTML =
+"Order Submitted Successfully<br><br>" +
+"Order Code: <b>" +
+orderCode +
+"</b>";
+
+const whatsappMessage =
+`Hello Kranchy's,
+
+Order Code: ${orderCode}
+
+Name: ${customerName}
+
+Phone: ${phone}
+
+${summary}
+
+${total}`;
+
+window.open(
+"https://wa.me/233538808949?text=" +
+encodeURIComponent(whatsappMessage),
+"_blank"
+);
+
+})
+.catch(error=>{
+alert("Submission failed. Please try again.");
+console.log(error);
+});
+
+});
+
+  </script>
 </body>
 </html>
