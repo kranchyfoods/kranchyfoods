@@ -610,6 +610,9 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbywN3dzuFZQMAXqzp7Qr
 
 console.log("SCRIPT LOADED");
 
+console.log(document.getElementById("orderForm"));
+alert(document.getElementById("orderForm"));
+
 document.getElementById("orderForm").addEventListener("submit", async function(e){
 
 e.preventDefault();
