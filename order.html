@@ -709,7 +709,9 @@ SCRIPT_URL,
 }
 );
   
-const result = await response.json();
+const result = await response.text();
+
+alert(result);
 
 document.getElementById("orderCode").style.display = "block";
 
