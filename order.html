@@ -603,5 +603,136 @@ calculateTotal
 );
 
 </script>
+  
+<script>
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbywN3dzuFZQMAXqzp7QrwinOYewxrHdRqbgFtzXW-F9diG41LTfmu3zsm0dzCsJSCH1/exec";
+
+document.getElementById("orderForm").addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const customerName =
+document.getElementById("customerName").value;
+
+const phoneNumber =
+document.getElementById("phoneNumber").value;
+
+const orderType =
+document.querySelector('input[name="ordertype"]:checked')?.parentElement.innerText || "";
+
+const spicyLevel =
+document.querySelector('input[name="spice"]:checked')?.nextElementSibling.innerText || "";
+
+const notes =
+document.querySelector("textarea").value;
+
+let meals = [];
+let drinks = [];
+
+document.querySelectorAll(".meal-card").forEach(card => {
+
+const check =
+card.querySelector(".meal-select");
+
+if(check && check.checked){
+
+const name =
+card.querySelector(".meal-name").innerText;
+
+const qty =
+card.querySelector(".qty")?.value || 1;
+
+meals.push(name + " x" + qty);
+
+}
+
+});
+
+document.querySelectorAll(".drink-card").forEach(card => {
+
+const check =
+card.querySelector(".meal-select");
+
+if(check && check.checked){
+
+const name =
+card.querySelector(".meal-name").innerText;
+
+const qty =
+card.querySelector(".qty")?.value || 1;
+
+drinks.push(name + " x" + qty);
+
+}
+
+});
+
+let extras = [];
+
+document.querySelectorAll(".extra:checked")
+.forEach(item => {
+
+extras.push(
+item.parentElement.innerText.trim()
+);
+
+});
+
+const total =
+document.getElementById("orderTotal")
+.innerText.replace("Total: GHS","");
+
+const payload = {
+
+customerName,
+phoneNumber,
+orderType,
+meals: meals.join(", "),
+extras: extras.join(", "),
+drinks: drinks.join(", "),
+spicyLevel,
+notes,
+total
+
+};
+
+try {
+
+const response = await fetch(
+SCRIPT_URL,
+{
+method:"POST",
+body:JSON.stringify(payload)
+}
+);
+
+const result = await response.json();
+
+document.getElementById("orderCode").style.display = "block";
+
+document.getElementById("orderCode").innerHTML =
+"✅ Order Submitted Successfully<br><br>Order Code: <b>" +
+result.orderCode +
+"</b>";
+
+alert(
+"Order received.\nOrder Code: " +
+result.orderCode
+);
+
+} catch(error){
+
+console.log(error);
+
+alert(
+"Unable to submit order. Please try again."
+);
+
+}
+
+});
+
+</script>  
 </body>
 </html>
