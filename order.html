@@ -637,7 +637,61 @@ async function testConnection(){
   }
 
 }
+ document.getElementById("orderForm").addEventListener(
+  "submit",
+  async function(e){
 
+    e.preventDefault();
+
+    const payload = {
+      customerName:
+        document.getElementById("customerName").value,
+
+      phoneNumber:
+        document.getElementById("phoneNumber").value,
+
+      total:
+        document.getElementById("orderTotal")
+        .innerText
+        .replace("Total: GHS",""),
+
+      meals:
+        document.getElementById("orderSummary")
+        .innerText
+    };
+
+    try {
+
+      const response = await fetch(
+        SCRIPT_URL,
+        {
+          method: "POST",
+          body: JSON.stringify(payload)
+        }
+      );
+
+      const result = await response.text();
+
+      alert(
+        "Order placed successfully!"
+      );
+
+      console.log(result);
+
+      document.getElementById("orderForm").reset();
+
+      calculateTotal();
+
+    } catch(error){
+
+      alert(
+        "Failed to send order."
+      );
+
+      console.log(error);
+
+    }
+});  
 </script>
 
 <button onclick="testConnection()">
