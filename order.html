@@ -644,22 +644,42 @@ async function testConnection(){
     e.preventDefault();
 
     const payload = {
-      customerName:
+    customerName:
         document.getElementById("customerName").value,
 
-      phoneNumber:
+    phoneNumber:
         document.getElementById("phoneNumber").value,
 
-      total:
+    orderType:
+        document.querySelector(
+            'input[name="orderType"]:checked'
+        )?.value || "",
+
+    meals:
+        document.getElementById("orderSummary")
+        .innerText,
+
+    extras:
+        document.getElementById("orderSummary")
+        .innerText,
+
+    drinks:
+        document.getElementById("orderSummary")
+        .innerText,
+
+    spicyLevel:
+        document.querySelector(
+            'input[name="spice"]:checked'
+        )?.value || "",
+
+    notes:
+        document.getElementById("notes")?.value || "",
+
+    total:
         document.getElementById("orderTotal")
         .innerText
-        .replace("Total: GHS",""),
-
-      meals:
-        document.getElementById("orderSummary")
-        .innerText
-    };
-
+        .replace("Total: GHS","")
+};
     try {
 
       const response = await fetch(
